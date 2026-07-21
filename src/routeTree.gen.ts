@@ -9,50 +9,514 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as VendorRouteImport } from './routes/vendor'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DriverRouteImport } from './routes/driver'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as PublicRouteImport } from './routes/_public'
+import { Route as PublicIndexRouteImport } from './routes/_public.index'
+import { Route as VendorReportsRouteImport } from './routes/vendor.reports'
+import { Route as VendorDashboardRouteImport } from './routes/vendor.dashboard'
+import { Route as VendorChatRouteImport } from './routes/vendor.chat'
+import { Route as VendorCarsRouteImport } from './routes/vendor.cars'
+import { Route as DriverHomeRouteImport } from './routes/driver.home'
+import { Route as DriverHistoryRouteImport } from './routes/driver.history'
+import { Route as AdminVendorsRouteImport } from './routes/admin.vendors'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as PublicProfileRouteImport } from './routes/_public.profile'
+import { Route as PublicMyBookingsRouteImport } from './routes/_public.my-bookings'
+import { Route as PublicChatRouteImport } from './routes/_public.chat'
+import { Route as PublicCarsRouteImport } from './routes/_public.cars'
+import { Route as DriverTripIdRouteImport } from './routes/driver.trip.$id'
+import { Route as PublicCarsIdRouteImport } from './routes/_public.cars.$id'
+import { Route as PublicBookingCarIdRouteImport } from './routes/_public.booking.$carId'
 
-const IndexRoute = IndexRouteImport.update({
+const VendorRoute = VendorRouteImport.update({
+  id: '/vendor',
+  path: '/vendor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriverRoute = DriverRouteImport.update({
+  id: '/driver',
+  path: '/driver',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
+} as any)
+const VendorReportsRoute = VendorReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => VendorRoute,
+} as any)
+const VendorDashboardRoute = VendorDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => VendorRoute,
+} as any)
+const VendorChatRoute = VendorChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => VendorRoute,
+} as any)
+const VendorCarsRoute = VendorCarsRouteImport.update({
+  id: '/cars',
+  path: '/cars',
+  getParentRoute: () => VendorRoute,
+} as any)
+const DriverHomeRoute = DriverHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => DriverRoute,
+} as any)
+const DriverHistoryRoute = DriverHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => DriverRoute,
+} as any)
+const AdminVendorsRoute = AdminVendorsRouteImport.update({
+  id: '/vendors',
+  path: '/vendors',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const PublicProfileRoute = PublicProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicMyBookingsRoute = PublicMyBookingsRouteImport.update({
+  id: '/my-bookings',
+  path: '/my-bookings',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicChatRoute = PublicChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicCarsRoute = PublicCarsRouteImport.update({
+  id: '/cars',
+  path: '/cars',
+  getParentRoute: () => PublicRoute,
+} as any)
+const DriverTripIdRoute = DriverTripIdRouteImport.update({
+  id: '/trip/$id',
+  path: '/trip/$id',
+  getParentRoute: () => DriverRoute,
+} as any)
+const PublicCarsIdRoute = PublicCarsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PublicCarsRoute,
+} as any)
+const PublicBookingCarIdRoute = PublicBookingCarIdRouteImport.update({
+  id: '/booking/$carId',
+  path: '/booking/$carId',
+  getParentRoute: () => PublicRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof PublicIndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/driver': typeof DriverRouteWithChildren
+  '/login': typeof LoginRoute
+  '/vendor': typeof VendorRouteWithChildren
+  '/cars': typeof PublicCarsRouteWithChildren
+  '/chat': typeof PublicChatRoute
+  '/my-bookings': typeof PublicMyBookingsRoute
+  '/profile': typeof PublicProfileRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/vendors': typeof AdminVendorsRoute
+  '/driver/history': typeof DriverHistoryRoute
+  '/driver/home': typeof DriverHomeRoute
+  '/vendor/cars': typeof VendorCarsRoute
+  '/vendor/chat': typeof VendorChatRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
+  '/vendor/reports': typeof VendorReportsRoute
+  '/booking/$carId': typeof PublicBookingCarIdRoute
+  '/cars/$id': typeof PublicCarsIdRoute
+  '/driver/trip/$id': typeof DriverTripIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/driver': typeof DriverRouteWithChildren
+  '/login': typeof LoginRoute
+  '/vendor': typeof VendorRouteWithChildren
+  '/cars': typeof PublicCarsRouteWithChildren
+  '/chat': typeof PublicChatRoute
+  '/my-bookings': typeof PublicMyBookingsRoute
+  '/profile': typeof PublicProfileRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/vendors': typeof AdminVendorsRoute
+  '/driver/history': typeof DriverHistoryRoute
+  '/driver/home': typeof DriverHomeRoute
+  '/vendor/cars': typeof VendorCarsRoute
+  '/vendor/chat': typeof VendorChatRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
+  '/vendor/reports': typeof VendorReportsRoute
+  '/': typeof PublicIndexRoute
+  '/booking/$carId': typeof PublicBookingCarIdRoute
+  '/cars/$id': typeof PublicCarsIdRoute
+  '/driver/trip/$id': typeof DriverTripIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_public': typeof PublicRouteWithChildren
+  '/admin': typeof AdminRouteWithChildren
+  '/driver': typeof DriverRouteWithChildren
+  '/login': typeof LoginRoute
+  '/vendor': typeof VendorRouteWithChildren
+  '/_public/cars': typeof PublicCarsRouteWithChildren
+  '/_public/chat': typeof PublicChatRoute
+  '/_public/my-bookings': typeof PublicMyBookingsRoute
+  '/_public/profile': typeof PublicProfileRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/vendors': typeof AdminVendorsRoute
+  '/driver/history': typeof DriverHistoryRoute
+  '/driver/home': typeof DriverHomeRoute
+  '/vendor/cars': typeof VendorCarsRoute
+  '/vendor/chat': typeof VendorChatRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
+  '/vendor/reports': typeof VendorReportsRoute
+  '/_public/': typeof PublicIndexRoute
+  '/_public/booking/$carId': typeof PublicBookingCarIdRoute
+  '/_public/cars/$id': typeof PublicCarsIdRoute
+  '/driver/trip/$id': typeof DriverTripIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/driver'
+    | '/login'
+    | '/vendor'
+    | '/cars'
+    | '/chat'
+    | '/my-bookings'
+    | '/profile'
+    | '/admin/dashboard'
+    | '/admin/vendors'
+    | '/driver/history'
+    | '/driver/home'
+    | '/vendor/cars'
+    | '/vendor/chat'
+    | '/vendor/dashboard'
+    | '/vendor/reports'
+    | '/booking/$carId'
+    | '/cars/$id'
+    | '/driver/trip/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/admin'
+    | '/driver'
+    | '/login'
+    | '/vendor'
+    | '/cars'
+    | '/chat'
+    | '/my-bookings'
+    | '/profile'
+    | '/admin/dashboard'
+    | '/admin/vendors'
+    | '/driver/history'
+    | '/driver/home'
+    | '/vendor/cars'
+    | '/vendor/chat'
+    | '/vendor/dashboard'
+    | '/vendor/reports'
+    | '/'
+    | '/booking/$carId'
+    | '/cars/$id'
+    | '/driver/trip/$id'
+  id:
+    | '__root__'
+    | '/_public'
+    | '/admin'
+    | '/driver'
+    | '/login'
+    | '/vendor'
+    | '/_public/cars'
+    | '/_public/chat'
+    | '/_public/my-bookings'
+    | '/_public/profile'
+    | '/admin/dashboard'
+    | '/admin/vendors'
+    | '/driver/history'
+    | '/driver/home'
+    | '/vendor/cars'
+    | '/vendor/chat'
+    | '/vendor/dashboard'
+    | '/vendor/reports'
+    | '/_public/'
+    | '/_public/booking/$carId'
+    | '/_public/cars/$id'
+    | '/driver/trip/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  PublicRoute: typeof PublicRouteWithChildren
+  AdminRoute: typeof AdminRouteWithChildren
+  DriverRoute: typeof DriverRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  VendorRoute: typeof VendorRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/vendor': {
+      id: '/vendor'
+      path: '/vendor'
+      fullPath: '/vendor'
+      preLoaderRoute: typeof VendorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/driver': {
+      id: '/driver'
+      path: '/driver'
+      fullPath: '/driver'
+      preLoaderRoute: typeof DriverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/vendor/reports': {
+      id: '/vendor/reports'
+      path: '/reports'
+      fullPath: '/vendor/reports'
+      preLoaderRoute: typeof VendorReportsRouteImport
+      parentRoute: typeof VendorRoute
+    }
+    '/vendor/dashboard': {
+      id: '/vendor/dashboard'
+      path: '/dashboard'
+      fullPath: '/vendor/dashboard'
+      preLoaderRoute: typeof VendorDashboardRouteImport
+      parentRoute: typeof VendorRoute
+    }
+    '/vendor/chat': {
+      id: '/vendor/chat'
+      path: '/chat'
+      fullPath: '/vendor/chat'
+      preLoaderRoute: typeof VendorChatRouteImport
+      parentRoute: typeof VendorRoute
+    }
+    '/vendor/cars': {
+      id: '/vendor/cars'
+      path: '/cars'
+      fullPath: '/vendor/cars'
+      preLoaderRoute: typeof VendorCarsRouteImport
+      parentRoute: typeof VendorRoute
+    }
+    '/driver/home': {
+      id: '/driver/home'
+      path: '/home'
+      fullPath: '/driver/home'
+      preLoaderRoute: typeof DriverHomeRouteImport
+      parentRoute: typeof DriverRoute
+    }
+    '/driver/history': {
+      id: '/driver/history'
+      path: '/history'
+      fullPath: '/driver/history'
+      preLoaderRoute: typeof DriverHistoryRouteImport
+      parentRoute: typeof DriverRoute
+    }
+    '/admin/vendors': {
+      id: '/admin/vendors'
+      path: '/vendors'
+      fullPath: '/admin/vendors'
+      preLoaderRoute: typeof AdminVendorsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_public/profile': {
+      id: '/_public/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof PublicProfileRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/my-bookings': {
+      id: '/_public/my-bookings'
+      path: '/my-bookings'
+      fullPath: '/my-bookings'
+      preLoaderRoute: typeof PublicMyBookingsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/chat': {
+      id: '/_public/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof PublicChatRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/cars': {
+      id: '/_public/cars'
+      path: '/cars'
+      fullPath: '/cars'
+      preLoaderRoute: typeof PublicCarsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/driver/trip/$id': {
+      id: '/driver/trip/$id'
+      path: '/trip/$id'
+      fullPath: '/driver/trip/$id'
+      preLoaderRoute: typeof DriverTripIdRouteImport
+      parentRoute: typeof DriverRoute
+    }
+    '/_public/cars/$id': {
+      id: '/_public/cars/$id'
+      path: '/$id'
+      fullPath: '/cars/$id'
+      preLoaderRoute: typeof PublicCarsIdRouteImport
+      parentRoute: typeof PublicCarsRoute
+    }
+    '/_public/booking/$carId': {
+      id: '/_public/booking/$carId'
+      path: '/booking/$carId'
+      fullPath: '/booking/$carId'
+      preLoaderRoute: typeof PublicBookingCarIdRouteImport
+      parentRoute: typeof PublicRoute
     }
   }
 }
 
+interface PublicCarsRouteChildren {
+  PublicCarsIdRoute: typeof PublicCarsIdRoute
+}
+
+const PublicCarsRouteChildren: PublicCarsRouteChildren = {
+  PublicCarsIdRoute: PublicCarsIdRoute,
+}
+
+const PublicCarsRouteWithChildren = PublicCarsRoute._addFileChildren(
+  PublicCarsRouteChildren,
+)
+
+interface PublicRouteChildren {
+  PublicCarsRoute: typeof PublicCarsRouteWithChildren
+  PublicChatRoute: typeof PublicChatRoute
+  PublicMyBookingsRoute: typeof PublicMyBookingsRoute
+  PublicProfileRoute: typeof PublicProfileRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+  PublicBookingCarIdRoute: typeof PublicBookingCarIdRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicCarsRoute: PublicCarsRouteWithChildren,
+  PublicChatRoute: PublicChatRoute,
+  PublicMyBookingsRoute: PublicMyBookingsRoute,
+  PublicProfileRoute: PublicProfileRoute,
+  PublicIndexRoute: PublicIndexRoute,
+  PublicBookingCarIdRoute: PublicBookingCarIdRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
+interface AdminRouteChildren {
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminVendorsRoute: typeof AdminVendorsRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminVendorsRoute: AdminVendorsRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface DriverRouteChildren {
+  DriverHistoryRoute: typeof DriverHistoryRoute
+  DriverHomeRoute: typeof DriverHomeRoute
+  DriverTripIdRoute: typeof DriverTripIdRoute
+}
+
+const DriverRouteChildren: DriverRouteChildren = {
+  DriverHistoryRoute: DriverHistoryRoute,
+  DriverHomeRoute: DriverHomeRoute,
+  DriverTripIdRoute: DriverTripIdRoute,
+}
+
+const DriverRouteWithChildren =
+  DriverRoute._addFileChildren(DriverRouteChildren)
+
+interface VendorRouteChildren {
+  VendorCarsRoute: typeof VendorCarsRoute
+  VendorChatRoute: typeof VendorChatRoute
+  VendorDashboardRoute: typeof VendorDashboardRoute
+  VendorReportsRoute: typeof VendorReportsRoute
+}
+
+const VendorRouteChildren: VendorRouteChildren = {
+  VendorCarsRoute: VendorCarsRoute,
+  VendorChatRoute: VendorChatRoute,
+  VendorDashboardRoute: VendorDashboardRoute,
+  VendorReportsRoute: VendorReportsRoute,
+}
+
+const VendorRouteWithChildren =
+  VendorRoute._addFileChildren(VendorRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  PublicRoute: PublicRouteWithChildren,
+  AdminRoute: AdminRouteWithChildren,
+  DriverRoute: DriverRouteWithChildren,
+  LoginRoute: LoginRoute,
+  VendorRoute: VendorRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
