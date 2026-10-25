@@ -27,3 +27,6 @@ i. Jangan mengubah tampilan visual yang sudah ada kecuali yang diminta. Tambahka
 - Jangan force-push, rebase, atau squash commit yang sudah di-push.
 - Jangan ubah blok `<!-- LOVABLE:BEGIN -->` sampai `<!-- LOVABLE:END -->` di `AGENTS.md`. Tambahkan bagian baru di bawahnya.
 - Jangan commit `.env` atau secret apa pun. Nilai secret hanya lewat environment.
+- Setiap PR milestone WAJIB punya baris pertama deskripsi: CHAIN-MILESTONE: Mx (x = milestone yang dikerjakan). Tanpa baris ini, otomatisasi tidak berjalan.
+- Satu sesi hanya satu milestone. Setelah PR dibuat, berhenti.
+- Lint dijalankan tanpa --fix.
