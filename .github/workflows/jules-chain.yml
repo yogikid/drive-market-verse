@@ -1,0 +1,24 @@
+name: jules-chain
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: jules-chain
+  cancel-in-progress: false
+
+jobs:
+  start-next-milestone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mulai milestone Jules berikutnya
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+        run: python3 scripts/jules_chain.py
